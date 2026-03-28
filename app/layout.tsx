@@ -11,6 +11,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Sudipta Ghorami",
   description: personalInfo.bio,
+  icons: {
+    icon: "/sudipta2.jpeg",
+    shortcut: "/sudipta2.jpeg",
+    apple: "/sudipta2.jpeg",
+  },
 };
 
 export default function RootLayout({
