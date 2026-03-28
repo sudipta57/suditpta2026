@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
+import MusicPlayer from "./MusicPlayer";
 
 const TYPING_SPEED = 90;
 const DELETING_SPEED = 55;
@@ -74,7 +75,7 @@ export default function Hero() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="py-20"
     >
-      <div className="h-[300px] w-full rounded-xl bg-white/5 relative">
+      <div className="h-[300px] w-full rounded-xl bg-white/5 relative overflow-visible">
         {/* <div className="flex h-full items-center justify-center text-sm uppercase tracking-[0.2em] text-[#888888]">banner image</div> */}
         <Image src="/sudipta_banner.png" alt="Sudipta banner" fill className="object-cover rounded-xl" />
       </div>

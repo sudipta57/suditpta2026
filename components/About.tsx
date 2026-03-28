@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { personalInfo, skills } from "@/lib/data";
 import Image from "next/image";
+import MusicPlayer from "./MusicPlayer";
 
 const groupVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -18,7 +19,7 @@ export default function About() {
       viewport={{ once: true }}
       transition={{ duration: 0.5, ease: "easeOut" }} 
     >
-      <div className="h-24 w-24 mx-auto rounded-xl bg-white/5 relative">
+      <div className="h-24 w-24 mx-auto rounded-xl bg-white/5 relative overflow-visible">
      
         <Image
           src="/sudipta2.jpeg"
@@ -26,7 +27,9 @@ export default function About() {
           fill
           className="object-cover rounded-xl"
         />
+        <MusicPlayer />
       </div>
+
       <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[#888888]">
         About Me
       </p>
