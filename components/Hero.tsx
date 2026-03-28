@@ -80,15 +80,68 @@ export default function Hero() {
         <Image src="/sudipta_banner.png" alt="Sudipta banner" fill className="object-cover rounded-xl" />
       </div>
 
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-        className="mt-8 text-4xl font-bold tracking-tight sm:text-5xl"
+        className="mt-8"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "16px",
+        }}
       >
-        <span className="text-[#e5e5e5]">Hey, I&apos;m </span>
-        <span className="text-[#00f5d4]">SUDIPTA</span>
-      </motion.h1>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          <span className="text-[#e5e5e5]">Hey, I&apos;m </span>
+          <span style={{ color: "#00f5d4" }}>SUDIPTA</span>
+        </h1>
+        <a
+          href="https://drive.google.com/file/d/1I4UxRt3rSVCiQR0eA1VNacYf7-Z0YP6U/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "6px",
+            padding: "6px 14px",
+            borderRadius: "999px",
+            border: "1px solid rgba(0,245,212,0.4)",
+            color: "#00f5d4",
+            fontSize: "0.8rem",
+            fontWeight: 500,
+            textDecoration: "none",
+            background: "rgba(0,245,212,0.05)",
+            transition: "background 0.2s, border-color 0.2s",
+            whiteSpace: "nowrap",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,245,212,0.12)";
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(0,245,212,0.7)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,245,212,0.05)";
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(0,245,212,0.4)";
+          }}
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          Resume
+        </a>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 10 }}
