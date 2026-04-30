@@ -51,12 +51,14 @@ export default function Contact() {
         transition={{ duration: 0.45, delay: 0.15, ease: "easeOut" }}
         className="mt-3 text-sm text-[#888888]"
       >
-        Open to internships, collabs, and interesting problems.
+        Open to remote internships and early-stage teams building ambitious products.
       </motion.p>
 
       <a href={`mailto:${personalInfo.email}`} className="mt-6 inline-block text-base text-[#00f5d4] transition-opacity duration-200 hover:opacity-80">
         {personalInfo.email}
       </a>
+
+      <p className="mt-2 text-sm text-[#888888]">{personalInfo.phone}</p>
 
       <SocialLinks />
 

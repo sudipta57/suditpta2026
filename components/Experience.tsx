@@ -49,15 +49,19 @@ export default function Experience() {
 
                   <div className="flex-1">
                     <p className="text-base font-semibold text-[#e5e5e5]">{item.role}</p>
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="mt-1 inline-block text-sm text-[#00f5d4]"
-                      onClick={(event) => event.stopPropagation()}
-                    >
-                      {item.company}
-                    </a>
+                    {item.url ? (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-1 inline-block text-sm text-[#00f5d4]"
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        {item.company}
+                      </a>
+                    ) : (
+                      <span className="mt-1 inline-block text-sm text-[#00f5d4]">{item.company}</span>
+                    )}
                   </div>
 
                   <div className="min-w-[140px] text-right text-xs text-[#888888]">

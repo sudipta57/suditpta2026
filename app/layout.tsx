@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sudipta Ghorami",
+  title: "Sudipta Ghorami | Full Stack Developer & AI Engineer",
   description: personalInfo.bio,
   icons: {
     icon: "/sudipta2.jpeg",

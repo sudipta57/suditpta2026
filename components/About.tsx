@@ -17,10 +17,9 @@ export default function About() {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }} 
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className="h-24 w-24 mx-auto rounded-xl bg-white/5 relative overflow-visible">
-     
         <Image
           src="/sudipta2.jpeg"
           alt="Sudipta banner"
@@ -30,9 +29,7 @@ export default function About() {
         <MusicPlayer />
       </div>
 
-      <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[#888888]">
-        About Me
-      </p>
+      <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[#888888]">Summary</p>
       <p className="mt-3 text-sm leading-relaxed text-[#888888]">
         {personalInfo.bio}
       </p>

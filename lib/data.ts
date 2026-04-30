@@ -1,7 +1,8 @@
 export const personalInfo = {
   name: "Sudipta Ghorami",
-  roles: ["Full Stack Developer", "AI Builder", "Android Developer", "Hackathon Finalist"],
-  bio: "I'm a 1st year BTech IT student at JIS College of Engineering who builds things that actually work. From AI-powered learning platforms to full-stack products in production — I go from idea to deployment.",
+  roles: ["Full Stack Developer", "AI Engineer", "Open to Remote Internships"],
+  bio: "First-year engineering student with hands-on production experience across multiple companies. I build full-stack AI products end-to-end — from system design to deployment. Comfortable with TypeScript, React, Next.js, FastAPI, Docker, and LLM pipelines in fast-paced startup environments.",
+  phone: "+91 8293863268",
   email: "ghoramisudipta32@gmail.com",
   github: "https://github.com/sudipta57",
   linkedin: "https://www.linkedin.com/in/sudipta-ghorami-261a81292/",
@@ -10,15 +11,25 @@ export const personalInfo = {
 
 export const experiences = [
   {
+    role: "SDE Intern",
+    company: "ThinkRoot",
+    url: "",
+    location: "Remote",
+    period: "May 2026 – Present",
+    bullets: [
+      "Building AI-native product features end-to-end and contributing to core application development at an early-stage startup",
+      "Shipped improvements across the stack with a focus on reliability, performance, and product velocity",
+    ],
+  },
+  {
     role: "Hacker in Residence",
     company: "Heva AI",
     url: "https://www.heva.ai/",
     location: "Remote",
-    period: "Sep 2025 – Present",
+    period: "Nov 2025 – Jan 2026",
     bullets: [
-      "Owned end-to-end development of an AI product — from research to production deployment",
-      "Conducted independent technical research, translating insights into production-ready implementations",
-      "Built and scaled core product features with focus on performance, reliability, and cost optimization",
+      "Owned end-to-end development of an AI product and reduced average response latency by 40% through async pipeline redesign and model-serving optimisation",
+      "Evaluated and shipped 3 AI architecture iterations in 4 months; established a CI/CD pipeline with GitHub Actions that cut deployment time from hours to under 10 minutes",
     ],
   },
   {
@@ -28,9 +39,8 @@ export const experiences = [
     location: "Remote",
     period: "Jul 2025 – Nov 2025",
     bullets: [
-      "Maintained and updated the entire JobGenix platform including job listings, dashboards, and admin panels",
-      "Implemented new features to improve UX and platform performance",
-      "Debugged full-stack production issues and optimized security and scalability",
+      "Maintained job listings, user dashboards, and admin panels serving 2,000+ active users while resolving 15+ production bugs",
+      "Migrated key components to TypeScript, reducing runtime errors by about 30% and improving code review velocity across the team",
     ],
   },
   {
@@ -40,60 +50,68 @@ export const experiences = [
     location: "Remote",
     period: "Sep 2024 – Mar 2025",
     bullets: [
-      "Built responsive web applications using React and integrated RESTful APIs",
-      "Collaborated with cross-functional teams to refine UI/UX designs",
-      "Improved application performance using best coding practices",
+      "Built 8+ responsive React components with Tailwind CSS and integrated RESTful APIs serving 500+ daily users",
+      "Improved Lighthouse performance score by 18 points through focused UI and performance work",
     ],
   },
 ];
 
 export const projects = [
-      {
+  {
+    name: "NeighbourNet",
+    description:
+      "Offline disaster-response Android app that turns phones into a Bluetooth/Wi-Fi Direct mesh, adds on-device Bengali and English AI triage, and syncs with a coordinator dashboard.",
+    tech: ["React Native", "TypeScript", "Kotlin", "FastAPI", "Supabase"],
+    github: "",
+    live: "",
+  },
+  {
+    name: "SentinelQA",
+    description:
+      "Autonomous AI QA agent that crawls a live URL, generates contextual test cases, runs them in a browser with Playwright, classifies failures, and returns a structured bug report.",
+    tech: ["Gemini API", "Playwright", "TypeScript", "Automation"],
+    github: "",
+    live: "",
+  },
+  {
     name: "Context AI",
-    description: "AI-powered context assistant for developers.",
-    tech: ["Next.js", "LLM" ,"generative ai"],
+    description:
+      "AI-powered context management tool built in TypeScript and deployed with Docker; includes tests around the core context-resolution logic.",
+    tech: ["TypeScript", "React", "Node.js", "Docker", "Jest"],
     github: "",
     live: "https://contextdhch.vercel.app/",
   },
   {
     name: "Cash Swap",
-    description: "A fast and clean money exchange web application.",
-    tech: ["React", "Node.js", "MongoDB"],
+    description:
+      "Peer-to-peer currency exchange web app in React and TypeScript with a GraphQL API and E2E coverage.",
+    tech: ["React", "TypeScript", "GraphQL", "Vercel"],
     github: "",
     live: "https://cashswap.vercel.app/",
-  },
-  {
-    
-    name: "DevPath",
-    description:
-      "AI-powered learning platform that takes a YouTube URL, assesses your knowledge via follow-up questions, and generates a structured day-by-day roadmap with XP points, quizzes, and a global leaderboard. Includes a real-time room/multiplayer system.",
-    tech: ["Next.js", "FastAPI", "LLM", "PostgreSQL", "generative ai", "real-time"],
-    github: "",
-    live: "",
-  },
-  {
-    name: "Conversational BI Dashboard",
-    description:
-      "Hackathon project — chat with your data. Type a question in plain English, get an instant SQL query, and see a live chart. Built with FastAPI, SQLite, Google Gemini, and Recharts.",
-    tech: ["FastAPI", "Gemini", "SQLite", "Next.js"],
-    github: "",
-    live: "",
-  },
-
-  {
-    name: "JobGenix",
-    description: "Full-featured job platform with listings, dashboards, and admin panel. Maintained in production.",
-    tech: ["Next.js", "Express", "MongoDB"],
-    github: "",
-    live: "https://www.jobgenix.co.in/",
   },
 ];
 
 export const skills = {
-  Languages: ["JavaScript", "TypeScript", "Python"],
-  Frontend: ["React", "Next.js", "Tailwind CSS", "Redux"],
-  Backend: ["Node.js", "Express", "FastAPI", "REST APIs"],
-  "AI / ML": ["LLM Applications", "NLP", "Model Serving", "Gemini API"],
-  Database: ["MongoDB", "PostgreSQL", "SQL", "SQLite"],
-  Tools: ["Git", "GitHub", "Vercel", "DNS", "Self-Hosting"],
+  Languages: ["TypeScript", "JavaScript (ES6+)", "Python"],
+  Frontend: ["React.js", "Next.js", "Redux", "Tailwind CSS", "GraphQL"],
+  Backend: ["Node.js", "Express.js", "FastAPI"],
+  "AI / ML": ["LLM App Dev", "RAG", "NLP", "ONNX Runtime", "On-device Inference"],
+  Mobile: ["React Native", "Kotlin", "Google Nearby Connections"],
+  Databases: ["PostgreSQL", "MongoDB", "SQL"],
+  "DevOps / Cloud": ["Docker", "GitHub Actions", "AWS", "GCP basics", "Vercel", "Self-Hosting"],
+  Testing: ["Jest", "Playwright"],
 };
+
+export const education = [
+  {
+    degree: "Bachelor of Technology (B.Tech) — Computer Science",
+    period: "2025 – 2029",
+    note: "First Year Engineering Student",
+  },
+];
+
+export const achievements = [
+  "MLH Hackathon winner — NeighbourNet, an offline disaster mesh system combining React Native, Kotlin, on-device AI, and a real-time coordinator dashboard for Bengal flood zones.",
+  "Participated in Binary V2 Hackathon (KGC Kalyani) — built a link-analysis MCQ and practice plan tool.",
+  "Active contributor to open-source projects on GitHub and the student developer and hackathon community across India.",
+];

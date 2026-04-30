@@ -95,7 +95,7 @@ export default function Hero() {
       >
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
           <span className="text-[#e5e5e5]">Hey, I&apos;m </span>
-          <span style={{ color: "#00f5d4" }}>SUDIPTA</span>
+          <span style={{ color: "#00f5d4" }}>{personalInfo.name}</span>
         </h1>
         <a
           href="https://drive.google.com/file/d/1I4UxRt3rSVCiQR0eA1VNacYf7-Z0YP6U/view?usp=sharing"
