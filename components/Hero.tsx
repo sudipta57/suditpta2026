@@ -98,7 +98,7 @@ export default function Hero() {
           <span style={{ color: "#00f5d4" }}>{personalInfo.name}</span>
         </h1>
         <a
-          href="https://drive.google.com/file/d/1I4UxRt3rSVCiQR0eA1VNacYf7-Z0YP6U/view?usp=sharing"
+          href="https://drive.google.com/file/d/11VPhgeqGcUehOF3nM1w_vP7OXo4qk_TC/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           style={{
