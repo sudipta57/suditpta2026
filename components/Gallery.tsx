@@ -5,6 +5,7 @@ import Image from "next/image";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { galleryPhotos as photos } from "@/lib/gallery";
+import SectionHead from "./SectionHead";
 
 const PREVIEW_COUNT = 9;
 
@@ -63,27 +64,20 @@ export default function Gallery() {
   const slide = reduceMotion ? 0 : 60;
 
   return (
-    <motion.section
-      id="gallery"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="py-20"
-    >
-      <h2 className="text-2xl font-semibold">Gallery</h2>
-      <p className="mt-2 text-sm text-[#888888]">
+    <section id="gallery" className="py-10">
+      <SectionHead title="Gallery" meta={`${photos.length} photos`} />
+      <p className="mt-3 text-sm text-ink-2">
         Hackathons, meetups and the people I build with.
       </p>
 
-      <div className="mt-8 columns-2 gap-3 sm:columns-3">
+      <div className="mt-5 columns-2 gap-3 sm:columns-3">
         {visible.map((photo, index) => (
           <button
             key={photo.key}
             type="button"
             onClick={(e) => open(index, e.currentTarget)}
             aria-label={`Open photo: ${photo.alt}`}
-            className="group mb-3 block w-full break-inside-avoid overflow-hidden rounded-lg border border-white/5 outline-none focus-visible:ring-2 focus-visible:ring-[#00f5d4] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+            className="group mb-3 block w-full break-inside-avoid overflow-hidden rounded-[3px] border border-rule bg-sheet"
           >
             <Image
               src={photo.src}
@@ -93,7 +87,7 @@ export default function Gallery() {
               placeholder="blur"
               blurDataURL={photo.blur}
               sizes="(min-width: 640px) 220px, 50vw"
-              className="h-auto w-full transition duration-300 group-hover:brightness-110 motion-reduce:transition-none"
+              className="h-auto w-full transition-opacity duration-200 group-hover:opacity-90 motion-reduce:transition-none"
             />
           </button>
         ))}
@@ -104,7 +98,7 @@ export default function Gallery() {
           type="button"
           onClick={() => setExpanded((v) => !v)}
           aria-expanded={expanded}
-          className="mt-4 rounded-full border border-white/10 px-4 py-2 text-sm text-[#bbbbbb] transition hover:border-[#00f5d4]/60 hover:text-[#00f5d4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00f5d4]"
+          className="mt-4 rounded-[3px] border border-rule px-4 py-2 text-sm hover:border-ink"
         >
           {expanded ? "Show fewer photos" : `Show all ${photos.length} photos`}
         </button>
@@ -137,7 +131,7 @@ export default function Gallery() {
                       ref={closeBtn}
                       type="button"
                       onClick={close}
-                      className="grid h-11 w-11 place-items-center rounded-full text-xl hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00f5d4]"
+                      className="grid h-11 w-11 place-items-center rounded-full text-xl hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"
                       aria-label="Close photo viewer"
                     >
                       ✕
@@ -187,7 +181,7 @@ export default function Gallery() {
                         step(-1);
                       }}
                       aria-label="Previous photo"
-                      className="absolute left-2 hidden h-11 w-11 place-items-center rounded-full bg-white/5 text-lg text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00f5d4] sm:grid"
+                      className="absolute left-2 hidden h-11 w-11 place-items-center rounded-full bg-white/5 text-lg text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal sm:grid"
                     >
                       ‹
                     </button>
@@ -198,7 +192,7 @@ export default function Gallery() {
                         step(1);
                       }}
                       aria-label="Next photo"
-                      className="absolute right-2 hidden h-11 w-11 place-items-center rounded-full bg-white/5 text-lg text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00f5d4] sm:grid"
+                      className="absolute right-2 hidden h-11 w-11 place-items-center rounded-full bg-white/5 text-lg text-white hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal sm:grid"
                     >
                       ›
                     </button>
@@ -216,6 +210,6 @@ export default function Gallery() {
             document.body,
           )
         : null}
-    </motion.section>
+    </section>
   );
 }

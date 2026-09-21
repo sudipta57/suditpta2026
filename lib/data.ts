@@ -1,15 +1,27 @@
 export const personalInfo = {
   name: "Sudipta Ghorami",
   roles: ["Full Stack Developer", "AI Engineer", "Open to Remote Internships"],
-  bio: "First-year engineering student with hands-on production experience across multiple companies. I build full-stack AI products end-to-end — from system design to deployment. Comfortable with TypeScript, React, Next.js, FastAPI, Docker, and LLM pipelines in fast-paced startup environments.",
+  bio: "Second-year engineering student with hands-on production experience across multiple companies and two hackathon podium finishes. I build full-stack AI products end-to-end — from system design to deployment. Comfortable with TypeScript, React, Next.js, FastAPI, Docker, and LLM pipelines in fast-paced startup environments.",
   phone: "+91 8293863268",
   email: "ghoramisudipta32@gmail.com",
   github: "https://github.com/sudipta57",
   linkedin: "https://www.linkedin.com/in/sudipta-ghorami-261a81292/",
-  photo: "/placeholder-avatar.jpg",
+  photo: "/sudipta-metamorph.webp",
+  resume:
+    "https://drive.google.com/file/d/11VPhgeqGcUehOF3nM1w_vP7OXo4qk_TC/view?usp=sharing",
 };
 
-export const experiences = [
+export type Experience = {
+  role: string;
+  company: string;
+  result?: { value: string; label: string };
+  url: string;
+  location: string;
+  period: string;
+  bullets: string[];
+};
+
+export const experiences: Experience[] = [
   {
     role: "SDE Intern",
     company: "ThinkRoot",
@@ -24,6 +36,7 @@ export const experiences = [
   {
     role: "Hacker in Residence",
     company: "Heva AI",
+    result: { value: "−40%", label: "response latency" },
     url: "https://www.heva.ai/",
     location: "Remote",
     period: "Nov 2025 – Jan 2026",
@@ -35,6 +48,7 @@ export const experiences = [
   {
     role: "Full Stack Developer",
     company: "JobGenix",
+    result: { value: "2,000+", label: "active users served" },
     url: "https://www.jobgenix.co.in/",
     location: "Remote",
     period: "Jul 2025 – Nov 2025",
@@ -46,6 +60,7 @@ export const experiences = [
   {
     role: "Web Developer Intern",
     company: "Secwebxperts Pvt. Ltd.",
+    result: { value: "+18", label: "Lighthouse performance" },
     url: "https://secwebxperts.com/",
     location: "Remote",
     period: "Sep 2024 – Mar 2025",
@@ -95,10 +110,23 @@ export const skills = {
   Languages: ["TypeScript", "JavaScript (ES6+)", "Python"],
   Frontend: ["React.js", "Next.js", "Redux", "Tailwind CSS", "GraphQL"],
   Backend: ["Node.js", "Express.js", "FastAPI"],
-  "AI / ML": ["LLM App Dev", "RAG", "NLP", "ONNX Runtime", "On-device Inference"],
+  "AI / ML": [
+    "LLM App Dev",
+    "RAG",
+    "NLP",
+    "ONNX Runtime",
+    "On-device Inference",
+  ],
   Mobile: ["React Native", "Kotlin", "Google Nearby Connections"],
   Databases: ["PostgreSQL", "MongoDB", "SQL"],
-  "DevOps / Cloud": ["Docker", "GitHub Actions", "AWS", "GCP basics", "Vercel", "Self-Hosting"],
+  "DevOps / Cloud": [
+    "Docker",
+    "GitHub Actions",
+    "AWS",
+    "GCP basics",
+    "Vercel",
+    "Self-Hosting",
+  ],
   Testing: ["Jest", "Playwright"],
 };
 
@@ -106,12 +134,36 @@ export const education = [
   {
     degree: "Bachelor of Technology (B.Tech) — Computer Science",
     period: "2025 – 2029",
-    note: "First Year Engineering Student",
+    note: "Second Year Engineering Student",
   },
 ];
 
-export const achievements = [
-  "MLH Hackathon winner — NeighbourNet, an offline disaster mesh system combining React Native, Kotlin, on-device AI, and a real-time coordinator dashboard for Bengal flood zones.",
-  "Participated in Binary V2 Hackathon (KGC Kalyani) — built a link-analysis MCQ and practice plan tool.",
-  "Active contributor to open-source projects on GitHub and the student developer and hackathon community across India.",
+export type Achievement = {
+  title: string;
+  /** Placement, shown as a measured result. Omit for non-competitive entries. */
+  result?: string;
+  detail: string;
+};
+
+export const achievements: Achievement[] = [
+  {
+    title: "Hacktropica 2026 x MLH",
+    result: "1st runners-up",
+    detail:
+      "NeighbourNet, an offline disaster mesh system combining React Native, Kotlin, on-device AI, and a real-time coordinator dashboard for Bengal flood zones.",
+  },
+  {
+    title: "Synchronicity S2.0, Jadavpur University",
+    result: "1st runners-up",
+    detail: "PacketForge, a DPDK-based kernel-bypass DDoS scrubber.",
+  },
+  {
+    title: "Binary V2 Hackathon, KGC Kalyani",
+    detail: "Built a link-analysis MCQ and practice plan tool.",
+  },
+  {
+    title: "Open source and community",
+    detail:
+      "Active contributor to open-source projects on GitHub and the student developer and hackathon community across India.",
+  },
 ];

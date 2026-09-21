@@ -17,11 +17,17 @@ const hidden = new Set(["3959f2848c", "af099ac2c8"]);
 
 const meta: Record<string, Meta> = {
   "96d272bc96": {
-    alt: "Team on stage holding the first runners-up cheque",
-    caption: "First runners-up",
+    alt: "Team Aloo Siddo on stage with the Hacktropica 2026 first runners-up cheque",
+    caption: "Hacktropica 2026, 1st runners-up",
   },
-  "5d6f1286d7": { alt: "Holding up a trophy in a crowded hall" },
-  "34fd7ba370": { alt: "Selfie with teammates holding a trophy" },
+  "5d6f1286d7": {
+    alt: "Holding up the Synchronicity S2.0 first runner-up trophy",
+    caption: "Synchronicity S2.0, 1st runners-up",
+  },
+  "34fd7ba370": {
+    alt: "Selfie with teammates and the Synchronicity S2.0 trophy",
+    caption: "Synchronicity S2.0, Jadavpur University",
+  },
   "4784a03c91": {
     alt: "Standing at the MetaMorph hackathon entrance",
     caption: "MetaMorph",

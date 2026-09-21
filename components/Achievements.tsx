@@ -1,43 +1,32 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { achievements } from "@/lib/data";
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
+import SectionHead from "./SectionHead";
 
 export default function Achievements() {
-  return (
-    <motion.section
-      id="achievements"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="py-20"
-    >
-      <h2 className="text-2xl font-semibold">Achievements &amp; Community</h2>
+  const podiums = achievements.filter((a) => a.result).length;
 
-      <motion.div
-        className="mt-8 space-y-3"
-        variants={{ show: { transition: { staggerChildren: 0.08 } } }}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-      >
-        {achievements.map((achievement) => (
-          <motion.article
-            key={achievement}
-            variants={itemVariants}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="rounded-xl border border-white/5 bg-white/5 p-4 text-sm leading-relaxed text-[#888888]"
-          >
-            {achievement}
-          </motion.article>
+  return (
+    <section id="achievements" className="py-10">
+      <SectionHead
+        title="Achievements"
+        meta={podiums ? `${podiums} podium finishes` : undefined}
+      />
+      <ul className="mt-2">
+        {achievements.map((item) => (
+          <li key={item.title} className="border-b border-rule py-5">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+              <h3 className="text-base font-semibold">{item.title}</h3>
+              {item.result ? (
+                <p className="font-mono text-sm font-medium text-signal-text">
+                  {item.result}
+                </p>
+              ) : null}
+            </div>
+            <p className="mt-2 text-[15px] leading-[1.7] text-ink-2">
+              {item.detail}
+            </p>
+          </li>
         ))}
-      </motion.div>
-    </motion.section>
+      </ul>
+    </section>
   );
 }

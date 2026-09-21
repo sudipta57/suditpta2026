@@ -1,166 +1,97 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data";
 import MusicPlayer from "./MusicPlayer";
 
-const TYPING_SPEED = 90;
-const DELETING_SPEED = 55;
-const HOLD_TIME = 1200;
+// "Full Stack Developer" -> "Full stack developer"; acronyms like "AI" stay intact.
+const sentenceCase = (text: string) =>
+  text
+    .split(" ")
+    .map((word, i) =>
+      i === 0 || /^[A-Z0-9]{2,}$/.test(word) ? word : word.toLowerCase(),
+    )
+    .join(" ");
 
-function IconLinks() {
-  return (
-    <div className="mt-5 flex items-center gap-4 text-[#888888]">
-      <a href={personalInfo.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="transition-colors duration-200 hover:text-[#00f5d4]">
-        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
-          <path d="M12 1.5a10.5 10.5 0 0 0-3.32 20.46c.52.1.72-.23.72-.5v-1.95c-2.93.64-3.55-1.25-3.55-1.25-.48-1.23-1.17-1.56-1.17-1.56-.95-.65.08-.64.08-.64 1.05.08 1.61 1.08 1.61 1.08.94 1.61 2.46 1.15 3.06.88.1-.68.36-1.15.65-1.41-2.34-.27-4.8-1.17-4.8-5.2 0-1.15.41-2.1 1.08-2.84-.11-.27-.47-1.37.1-2.85 0 0 .88-.28 2.9 1.08a9.93 9.93 0 0 1 5.28 0c2.01-1.36 2.9-1.08 2.9-1.08.56 1.48.2 2.58.1 2.85.67.74 1.08 1.69 1.08 2.84 0 4.04-2.47 4.93-4.82 5.19.37.32.71.95.71 1.92v2.85c0 .28.19.61.73.5A10.5 10.5 0 0 0 12 1.5Z" />
-        </svg>
-      </a>
-      <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="transition-colors duration-200 hover:text-[#00f5d4]">
-        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
-          <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A1.97 1.97 0 1 0 5.3 6.94 1.97 1.97 0 0 0 5.25 3Zm4.4 5.5H6.42V20h3.23v-5.7c0-1.5.28-2.95 2.13-2.95 1.82 0 1.85 1.7 1.85 3.04V20h3.23v-6.25c0-3.07-.66-5.43-4.24-5.43-1.72 0-2.88.94-3.35 1.84h-.05V8.5Z" />
-        </svg>
-      </a>
-      <a href={`mailto:${personalInfo.email}`} aria-label="Email" className="transition-colors duration-200 hover:text-[#00f5d4]">
-        <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
-          <path d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Zm2 0v.19l7 5.09 7-5.09v-.19a.75.75 0 0 0-.75-.75H5.75a.75.75 0 0 0-.75.75Zm16 2.66-6.41 4.66a1 1 0 0 1-1.18 0L7 9.41v7.84c0 .41.34.75.75.75h10.5c.41 0 .75-.34.75-.75V9.41Z" />
-        </svg>
-      </a>
-    </div>
+// Lowercases the first word too, for use mid-sentence ("and AI engineer").
+const midSentence = (text: string) =>
+  sentenceCase(text).replace(/^\S+/, (w) =>
+    /^[A-Z0-9]{2,}$/.test(w) ? w : w.toLowerCase(),
   );
-}
+
+const [primaryRole, secondaryRole, status] =
+  personalInfo.roles.map(sentenceCase);
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const roles = personalInfo.roles;
-    const currentRole = roles[roleIndex];
-
-    const timeout = setTimeout(
-      () => {
-        if (!isDeleting) {
-          const nextText = currentRole.slice(0, displayedText.length + 1);
-          setDisplayedText(nextText);
-
-          if (nextText === currentRole) {
-            setTimeout(() => setIsDeleting(true), HOLD_TIME);
-          }
-        } else {
-          const nextText = currentRole.slice(0, displayedText.length - 1);
-          setDisplayedText(nextText);
-
-          if (nextText.length === 0) {
-            setIsDeleting(false);
-            setRoleIndex((prev) => (prev + 1) % roles.length);
-          }
-        }
-      },
-      isDeleting ? DELETING_SPEED : TYPING_SPEED,
-    );
-
-    return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, roleIndex]);
-
   return (
-    <motion.section
-      id="home"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="py-20"
-    >
-      <div className="h-[300px] w-full rounded-xl bg-white/5 relative overflow-visible">
-        {/* <div className="flex h-full items-center justify-center text-sm uppercase tracking-[0.2em] text-[#888888]">banner image</div> */}
-        <Image src="/sudipta_banner.png" alt="Sudipta banner" fill className="object-cover rounded-xl" />
+    <section id="home" className="pb-4 pt-8">
+      <p className="flex items-center gap-2 border-b border-rule pb-3 font-mono text-xs text-ink-2">
+        <span
+          aria-hidden="true"
+          className="live-dot h-[7px] w-[7px] rounded-full bg-signal"
+        />
+        {status}
+      </p>
+
+      <div className="mt-8 flex items-start gap-5 sm:gap-6">
+        <div className="relative shrink-0">
+          <div className="relative h-[124px] w-[92px] overflow-hidden rounded-[3px] border border-rule sm:h-[150px] sm:w-[110px]">
+            <Image
+              src={personalInfo.photo}
+              alt={personalInfo.name}
+              fill
+              sizes="110px"
+              priority
+              className="object-cover"
+            />
+          </div>
+          <MusicPlayer />
+        </div>
+
+        <div className="min-w-0 pt-1">
+          <h1 className="text-[2rem] font-semibold leading-[1.05] tracking-[-0.025em] sm:text-[2.75rem]">
+            {personalInfo.name}
+          </h1>
+          <p className="mt-3 text-base text-ink-2">
+            {primaryRole} and {midSentence(secondaryRole)}
+          </p>
+        </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-        className="mt-8"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "16px",
-        }}
-      >
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-          <span className="text-[#e5e5e5]">Hey, I&apos;m </span>
-          <span style={{ color: "#00f5d4" }}>{personalInfo.name}</span>
-        </h1>
+      <p className="mt-8 max-w-[62ch] text-[15px] leading-[1.75]">
+        {personalInfo.bio}
+      </p>
+
+      <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm">
         <a
-          href="https://drive.google.com/file/d/11VPhgeqGcUehOF3nM1w_vP7OXo4qk_TC/view?usp=sharing"
+          href={personalInfo.resume}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "6px",
-            padding: "6px 14px",
-            borderRadius: "999px",
-            border: "1px solid rgba(0,245,212,0.4)",
-            color: "#00f5d4",
-            fontSize: "0.8rem",
-            fontWeight: 500,
-            textDecoration: "none",
-            background: "rgba(0,245,212,0.05)",
-            transition: "background 0.2s, border-color 0.2s",
-            whiteSpace: "nowrap",
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,245,212,0.12)";
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(0,245,212,0.7)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.background = "rgba(0,245,212,0.05)";
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(0,245,212,0.4)";
-          }}
+          className="rounded-[3px] bg-ink px-4 py-2 font-medium text-paper hover:opacity-90"
         >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
-          Resume
+          View resume
         </a>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35, duration: 0.4, ease: "easeOut" }}
-      >
-        <p className="mt-4 min-h-[1.5rem] text-sm text-[#00f5d4]">
-          {displayedText}
-          <span className="ml-0.5 inline-block w-[1px] animate-pulse bg-[#00f5d4] align-middle">&nbsp;</span>
-        </p>
-      </motion.div>
-
-      <p className="mt-4 text-sm leading-relaxed text-[#888888]">{personalInfo.bio}</p>
-
-      <IconLinks />
-
-      <a href="#about" className="mt-6 inline-block text-sm text-[#888888] transition-colors duration-200 hover:text-[#00f5d4]">
-        More →
-      </a>
-    </motion.section>
+        <a
+          href={personalInfo.github}
+          target="_blank"
+          rel="noreferrer"
+          className="text-ink underline decoration-rule hover:decoration-signal"
+        >
+          GitHub
+        </a>
+        <a
+          href={personalInfo.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="text-ink underline decoration-rule hover:decoration-signal"
+        >
+          LinkedIn
+        </a>
+        <a
+          href={`mailto:${personalInfo.email}`}
+          className="text-ink underline decoration-rule hover:decoration-signal"
+        >
+          Email
+        </a>
+      </div>
+    </section>
   );
 }
