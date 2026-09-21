@@ -1,7 +1,7 @@
 export const personalInfo = {
   name: "Sudipta Ghorami",
   roles: ["Full Stack Developer", "AI Engineer", "Open to Remote Internships"],
-  bio: "First-year engineering student with hands-on production experience across multiple companies. I build full-stack AI products end-to-end — from system design to deployment. Comfortable with TypeScript, React, Next.js, FastAPI, Docker, and LLM pipelines in fast-paced startup environments.",
+  bio: "Second-year engineering student with hands-on production experience across multiple companies and two hackathon podium finishes. I build full-stack AI products end-to-end — from system design to deployment. Comfortable with TypeScript, React, Next.js, FastAPI, Docker, and LLM pipelines in fast-paced startup environments.",
   phone: "+91 8293863268",
   email: "ghoramisudipta32@gmail.com",
   github: "https://github.com/sudipta57",
@@ -110,10 +110,23 @@ export const skills = {
   Languages: ["TypeScript", "JavaScript (ES6+)", "Python"],
   Frontend: ["React.js", "Next.js", "Redux", "Tailwind CSS", "GraphQL"],
   Backend: ["Node.js", "Express.js", "FastAPI"],
-  "AI / ML": ["LLM App Dev", "RAG", "NLP", "ONNX Runtime", "On-device Inference"],
+  "AI / ML": [
+    "LLM App Dev",
+    "RAG",
+    "NLP",
+    "ONNX Runtime",
+    "On-device Inference",
+  ],
   Mobile: ["React Native", "Kotlin", "Google Nearby Connections"],
   Databases: ["PostgreSQL", "MongoDB", "SQL"],
-  "DevOps / Cloud": ["Docker", "GitHub Actions", "AWS", "GCP basics", "Vercel", "Self-Hosting"],
+  "DevOps / Cloud": [
+    "Docker",
+    "GitHub Actions",
+    "AWS",
+    "GCP basics",
+    "Vercel",
+    "Self-Hosting",
+  ],
   Testing: ["Jest", "Playwright"],
 };
 
@@ -121,12 +134,36 @@ export const education = [
   {
     degree: "Bachelor of Technology (B.Tech) — Computer Science",
     period: "2025 – 2029",
-    note: "First Year Engineering Student",
+    note: "Second Year Engineering Student",
   },
 ];
 
-export const achievements = [
-  "MLH Hackathon winner — NeighbourNet, an offline disaster mesh system combining React Native, Kotlin, on-device AI, and a real-time coordinator dashboard for Bengal flood zones.",
-  "Participated in Binary V2 Hackathon (KGC Kalyani) — built a link-analysis MCQ and practice plan tool.",
-  "Active contributor to open-source projects on GitHub and the student developer and hackathon community across India.",
+export type Achievement = {
+  title: string;
+  /** Placement, shown as a measured result. Omit for non-competitive entries. */
+  result?: string;
+  detail: string;
+};
+
+export const achievements: Achievement[] = [
+  {
+    title: "Hacktropica 2026 x MLH",
+    result: "1st runners-up",
+    detail:
+      "NeighbourNet, an offline disaster mesh system combining React Native, Kotlin, on-device AI, and a real-time coordinator dashboard for Bengal flood zones.",
+  },
+  {
+    title: "Synchronicity S2.0, Jadavpur University",
+    result: "1st runners-up",
+    detail: "PacketForge, a DPDK-based kernel-bypass DDoS scrubber.",
+  },
+  {
+    title: "Binary V2 Hackathon, KGC Kalyani",
+    detail: "Built a link-analysis MCQ and practice plan tool.",
+  },
+  {
+    title: "Open source and community",
+    detail:
+      "Active contributor to open-source projects on GitHub and the student developer and hackathon community across India.",
+  },
 ];

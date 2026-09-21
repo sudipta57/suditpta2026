@@ -6,7 +6,7 @@ export default function SectionHead({ title, meta }: Props) {
     <div className="flex items-baseline justify-between gap-4 border-t border-ink pt-3">
       <h2 className="text-xl font-semibold tracking-[-0.01em]">{title}</h2>
       {meta ? (
-        <span className="font-mono text-xs text-ink-2">{meta}</span>
+        <span className="whitespace-nowrap font-mono text-xs text-ink-2">{meta}</span>
       ) : null}
     </div>
   );
