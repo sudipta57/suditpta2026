@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
+// Light unless the visitor has chosen dark with this toggle.
 function currentTheme(): Theme {
-  const set = document.documentElement.dataset.theme;
-  if (set === "light" || set === "dark") return set;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
+
+// Keeps the phone's browser bar in step with the page colour.
+function setThemeColor(theme: Theme) {
+  document
+    .querySelector('meta[name="theme-color"]')
+    ?.setAttribute("content", theme === "dark" ? "#0f151b" : "#edf0f2");
 }
 
 export default function ThemeToggle() {
@@ -20,6 +24,7 @@ export default function ThemeToggle() {
   const toggle = () => {
     const next: Theme = currentTheme() === "dark" ? "light" : "dark";
     document.documentElement.dataset.theme = next;
+    setThemeColor(next);
     try {
       localStorage.setItem("theme", next);
     } catch {}

@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 /*
-  Lab log theme tokens. Light is the default; dark is designed, not inverted.
+  Lab log theme tokens. Light is always the default, regardless of the
+  visitor's system setting; dark applies only after they choose it with the
+  toggle. Dark is designed, not inverted.
   Every text pair passes WCAG AA (checked: ink2 >= 6:1, signal-text >= 4.8:1).
 */
 :root {
@@ -15,19 +17,6 @@
   --signal: #f2541b;
   --signal-text: #b8400f;
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0f151b;
-    --sheet: #151d25;
-    --ink: #e4e9ed;
-    --ink-2: #95a3ae;
-    --rule: #28343f;
-    --signal: #ff6b2c;
-    --signal-text: #ff8a54;
-    color-scheme: dark;
-  }
 }
 
 :root[data-theme="dark"] {
