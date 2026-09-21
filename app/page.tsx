@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Education from "../components/Education";
 import Achievements from "../components/Achievements";
+import Gallery from "@/components/Gallery";
 
 export default function HomePage() {
   return (
@@ -18,6 +19,7 @@ export default function HomePage() {
         <Experience />
         <Education />
         <Achievements />
+        <Gallery />
         <Contact />
       </main>
     </>

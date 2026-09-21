@@ -24,3 +24,6 @@ pnpm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw photos for scripts/build_gallery.py
+/gallery-src
