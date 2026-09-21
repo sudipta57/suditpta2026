@@ -6,10 +6,22 @@ export const personalInfo = {
   email: "ghoramisudipta32@gmail.com",
   github: "https://github.com/sudipta57",
   linkedin: "https://www.linkedin.com/in/sudipta-ghorami-261a81292/",
-  photo: "/placeholder-avatar.jpg",
+  photo: "/sudipta2.jpeg",
+  resume:
+    "https://drive.google.com/file/d/11VPhgeqGcUehOF3nM1w_vP7OXo4qk_TC/view?usp=sharing",
 };
 
-export const experiences = [
+export type Experience = {
+  role: string;
+  company: string;
+  result?: { value: string; label: string };
+  url: string;
+  location: string;
+  period: string;
+  bullets: string[];
+};
+
+export const experiences: Experience[] = [
   {
     role: "SDE Intern",
     company: "ThinkRoot",
@@ -24,6 +36,7 @@ export const experiences = [
   {
     role: "Hacker in Residence",
     company: "Heva AI",
+    result: { value: "−40%", label: "response latency" },
     url: "https://www.heva.ai/",
     location: "Remote",
     period: "Nov 2025 – Jan 2026",
@@ -35,6 +48,7 @@ export const experiences = [
   {
     role: "Full Stack Developer",
     company: "JobGenix",
+    result: { value: "2,000+", label: "active users served" },
     url: "https://www.jobgenix.co.in/",
     location: "Remote",
     period: "Jul 2025 – Nov 2025",
@@ -46,6 +60,7 @@ export const experiences = [
   {
     role: "Web Developer Intern",
     company: "Secwebxperts Pvt. Ltd.",
+    result: { value: "+18", label: "Lighthouse performance" },
     url: "https://secwebxperts.com/",
     location: "Remote",
     period: "Sep 2024 – Mar 2025",

@@ -1,49 +1,26 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { education } from "@/lib/data";
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0 },
-};
+import SectionHead from "./SectionHead";
 
 export default function Education() {
   return (
-    <motion.section
-      id="education"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="py-20"
-    >
-      <h2 className="text-2xl font-semibold">Education</h2>
-
-      <motion.div
-        className="mt-8 space-y-4"
-        variants={{ show: { transition: { staggerChildren: 0.08 } } }}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-      >
+    <section id="education" className="py-10">
+      <SectionHead title="Education" />
+      <ol className="mt-2">
         {education.map((item) => (
-          <motion.article
+          <li
             key={`${item.degree}-${item.period}`}
-            variants={itemVariants}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="rounded-xl border border-white/5 bg-white/5 p-4"
+            className="grid gap-x-5 gap-y-1 border-b border-rule py-5 sm:grid-cols-[8.5rem_1fr]"
           >
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h3 className="text-base font-semibold text-[#e5e5e5]">{item.degree}</h3>
-                <p className="mt-1 text-sm text-[#00f5d4]">{item.note}</p>
-              </div>
-              <p className="text-sm text-[#888888]">{item.period}</p>
+            <p className="pt-0.5 font-mono text-xs leading-5 text-ink-2">
+              {item.period}
+            </p>
+            <div>
+              <h3 className="text-base font-semibold">{item.degree}</h3>
+              <p className="mt-1 text-sm text-ink-2">{item.note}</p>
             </div>
-          </motion.article>
+          </li>
         ))}
-      </motion.div>
-    </motion.section>
+      </ol>
+    </section>
   );
 }
