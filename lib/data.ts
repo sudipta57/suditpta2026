@@ -6,7 +6,7 @@ export const personalInfo = {
   email: "ghoramisudipta32@gmail.com",
   github: "https://github.com/sudipta57",
   linkedin: "https://www.linkedin.com/in/sudipta-ghorami-261a81292/",
-  photo: "/sudipta2.jpeg",
+  photo: "/sudipta-metamorph.webp",
   resume:
     "https://drive.google.com/file/d/11VPhgeqGcUehOF3nM1w_vP7OXo4qk_TC/view?usp=sharing",
 };
