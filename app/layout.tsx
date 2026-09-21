@@ -28,14 +28,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#edf0f2" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f151b" },
-  ],
+  themeColor: "#edf0f2",
 };
 
-// Applies a saved theme before first paint, so there's no light/dark flash.
-const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+// Applies a saved dark choice before first paint, so there's no flash.
+// With nothing saved, the page stays light whatever the system setting is.
+const themeScript = `try{if(localStorage.getItem("theme")==="dark"){document.documentElement.dataset.theme="dark";var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#0f151b")}}catch(e){}`;
 
 export default function RootLayout({
   children,
