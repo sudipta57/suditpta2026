@@ -36,14 +36,15 @@ export default function Navbar() {
 
   useEffect(() => {
     // Keep the active link visible in the horizontally scrolling list on phones.
-    const link = listRef.current?.querySelector<HTMLElement>(
-      `[data-id="${active}"]`,
-    );
-    link?.scrollIntoView({
-      block: "nearest",
-      inline: "center",
-      behavior: "smooth",
-    });
+    // Scrolls ONLY the list. scrollIntoView() would also scroll the page and
+    // fight the user's own scrolling (and kill iOS momentum scrolling).
+    const list = listRef.current;
+    const link = list?.querySelector<HTMLElement>(`[data-id="${active}"]`);
+    if (!list || !link) return;
+    const listBox = list.getBoundingClientRect();
+    const linkBox = link.getBoundingClientRect();
+    const delta = linkBox.left - listBox.left - (listBox.width - linkBox.width) / 2;
+    if (Math.abs(delta) > 4) list.scrollBy({ left: delta, behavior: "smooth" });
   }, [active]);
 
   return (
